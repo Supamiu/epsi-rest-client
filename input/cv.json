@@ -1,0 +1,28 @@
+{
+  "name": "Flavien Normand",
+  "title": "Développeur Junior",
+  "description": "Qui suis-je ? un jeune développeur passioné depuis la fin de son enfance par l'informatique, depuis l'overclock jusqu'au développement de solutions de sécurité, je me perfectionne de jour en jour dans des domaines qui me passionnent.",
+  "pictureUrl": "http://flavien-normand.fr/img/0.jpg",
+  "birthDate": "19 Décembre 1993",
+  "city": "Nantes",
+  "country": "France",
+  "address": "33 rue Camille Desmoulins",
+  "githubProfileUrl": "http://github.com/Supamiu",
+  "stackOverflowUrl": "http://stackoverflow.com/users/4102561/supamiu",
+  "skills": [
+    {
+      "name": "Angular2",
+      "level": 1
+    }
+  ],
+  "experiences": [],
+  "educations": [],
+  "interests": [],
+  "personalExperiences": [],
+  "contactInformations": [
+    {
+      "phoneNumber": "0665016329",
+      "email":"contact@flavien-normand.fr"
+    }
+  ]
+}
