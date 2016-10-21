@@ -1,0 +1,19 @@
+<div id="wrapper" class="row valign-wrapper">
+    <form class="col z-depth-2 grey lighten-2 offset-s4 s4 valign" (ngSubmit)="connect()">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="login" type="text" class="validate" name="login"[(ngModel)]="login">
+                <label for="login">Login</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate" name="password"[(ngModel)]="password">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row center">
+            <button type="submit" class="waves-effect waves-light btn">button</button>
+        </div>
+    </form>
+</div>

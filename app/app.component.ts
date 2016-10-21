@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
-    template: 'Client REST'
+    templateUrl: `./app.component.html`
 })
-export class AppComponent { }
+export class AppComponent {
+}
