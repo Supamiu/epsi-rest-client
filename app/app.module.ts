@@ -12,6 +12,7 @@ import {FriendsComponent} from "./component/friends.component";
 import {FriendComponent} from "./component/friend.component";
 import {TweetsComponent} from "./component/tweets.component";
 import {TweetComponent} from "./component/tweet.component";
+import {SignupComponent} from "./component/sign-up.component";
 
 @NgModule({
     imports: [
@@ -31,6 +32,10 @@ import {TweetComponent} from "./component/tweet.component";
             {
                 path: 'home',
                 component: HomeComponent
+            },
+            {
+                path: 'signup',
+                component: SignupComponent
             }
         ])],
     declarations: [
@@ -40,7 +45,9 @@ import {TweetComponent} from "./component/tweet.component";
         FriendsComponent,
         FriendComponent,
         TweetsComponent,
-    TweetComponent],
+        SignupComponent,
+        TweetComponent
+    ],
     bootstrap: [AppComponent],
     providers: [AuthService, ApiService]
 })

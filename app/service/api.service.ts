@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {RequestOptionsArgs, Http, RequestMethod} from "@angular/http";
+import {RequestOptionsArgs, Http, RequestMethod, Headers} from "@angular/http";
 import {Observable} from "rxjs";
 import "rxjs/add/operator/map";
 import {AuthService} from "./auth.service";
@@ -15,12 +15,16 @@ export class ApiService {
     public put<T>(uri: string, body: string, options: RequestOptionsArgs = {}): Observable<T> {
         options.method = RequestMethod.Put;
         options.body = body;
+        options.headers = new Headers();
+        options.headers.append('Content-Type', 'application/json');
         return this.request<T>(uri, options);
     }
 
     public post<T>(uri: string, body: string, options: RequestOptionsArgs = {}): Observable<T> {
         options.method = RequestMethod.Post;
         options.body = body;
+        options.headers = new Headers();
+        options.headers.append('Content-Type', 'application/json');
         return this.request<T>(uri, options);
     }
 
@@ -31,9 +35,9 @@ export class ApiService {
 
     public request<T>(uri: string, options: RequestOptionsArgs): Observable<T> {
         if (this.auth.isConnected()) {
-            if(uri.indexOf('?') === -1) {
+            if (uri.indexOf('?') === -1) {
                 uri += "?key=" + this.auth.key;
-            }else{
+            } else {
                 uri += "&key=" + this.auth.key;
             }
         }

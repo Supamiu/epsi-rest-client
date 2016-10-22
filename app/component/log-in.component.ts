@@ -23,4 +23,8 @@ export class LoginComponent {
             this.router.navigateByUrl('/home');
         });
     }
+
+    signup(): void {
+        this.router.navigateByUrl('/signup');
+    }
 }
