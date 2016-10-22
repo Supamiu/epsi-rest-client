@@ -1,7 +1,5 @@
 <div class="container">
     <div class="row">
-        <ul class="s6 collapsible popout" data-collapsible="accordion">
-            <friend *ngFor="let id of friendIds" [friendId]="id"></friend>
-        </ul>
+        <friends [friendIds]="friendIds"></friends>
     </div>
 </div>

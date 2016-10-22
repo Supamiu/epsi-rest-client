@@ -8,7 +8,10 @@ import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./component/log-in.component";
 import {HomeComponent} from "./component/home.component";
 import {FormsModule} from "@angular/forms";
+import {FriendsComponent} from "./component/friends.component";
 import {FriendComponent} from "./component/friend.component";
+import {TweetsComponent} from "./component/tweets.component";
+import {TweetComponent} from "./component/tweet.component";
 
 @NgModule({
     imports: [
@@ -34,7 +37,10 @@ import {FriendComponent} from "./component/friend.component";
         AppComponent,
         LoginComponent,
         HomeComponent,
-        FriendComponent],
+        FriendsComponent,
+        FriendComponent,
+        TweetsComponent,
+    TweetComponent],
     bootstrap: [AppComponent],
     providers: [AuthService, ApiService]
 })

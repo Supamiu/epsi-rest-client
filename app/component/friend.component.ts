@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {ApiService} from "../service/api.service";
 import {AuthService} from "../service/auth.service";
 @Component({
     moduleId: module.id,
-    selector: 'friend',
-    templateUrl: 'friend.component.html'
+    selector: "friend",
+    templateUrl: "friend.component.html"
 })
-export class FriendComponent implements OnInit{
+export class FriendComponent {
 
     @Input() friendId: number;
 
@@ -14,9 +14,9 @@ export class FriendComponent implements OnInit{
 
     constructor(private api:ApiService, private auth:AuthService){}
 
-    ngOnInit(): void {
-        this.api.get('/users/'+this.auth.getUserId()+"/friends/"+this.friendId).subscribe(friend => {
+    ngOnInit():void{
+        this.api.get('/users/' + this.auth.getUserId() + "/friends/" + this.friendId).subscribe(friend => {
             this.friend = friend;
-        })
+        });
     }
 }
