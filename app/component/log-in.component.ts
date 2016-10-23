@@ -15,6 +15,8 @@ export class LoginComponent {
     private password: string;
 
     constructor(private api: ApiService, private auth: AuthService, private router: Router) {
+        localStorage.removeItem("api_key");
+        localStorage.removeItem("user");
     }
 
     connect(): void {

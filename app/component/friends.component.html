@@ -1,6 +1,6 @@
-<ul class="s6 collapsible popout" data-collapsible="accordion">
-    <li *ngFor="let id of friendIds">
-        <friend [friendId]="id" class="collapsible-header"></friend>
-        <tweets [friendId]="id" class="collapsible-body"></tweets>
+<ul class="s6 collapsible popout" data-collapsible="accordion" *ngIf="friendIds.length > 0">
+    <li *ngFor="let friend of friends">
+        <friend [friend]="friend" class="collapsible-header"></friend>
+        <tweets [friendId]="friend.id" class="collapsible-body"></tweets>
     </li>
 </ul>

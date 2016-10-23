@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {ApiService} from "../service/api.service";
 import {AuthService} from "../service/auth.service";
+import {Tweet} from "./tweet.component";
 @Component({
     moduleId: module.id,
     selector: 'tweets',
@@ -9,13 +10,13 @@ import {AuthService} from "../service/auth.service";
 export class TweetsComponent implements OnInit {
     @Input() friendId: number;
 
-    tweets: any[];
+    tweets: Tweet[];
 
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
     ngOnInit(): void {
-        this.api.get<any>('/users/' + this.auth.getUserId() + "/friends/" + this.friendId + "/tweets").subscribe(tweets => {
+        this.api.get<Tweet[]>('/users/' + this.auth.getUserId() + "/friends/" + this.friendId + "/tweets").subscribe(tweets => {
             this.tweets = tweets;
         })
     }

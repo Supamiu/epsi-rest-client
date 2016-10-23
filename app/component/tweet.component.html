@@ -1,1 +1,12 @@
-<div [innerHTML]="tweetHTML"></div>
+<div class="card horizontal blue-grey lighten-3">
+    <div class="card-stacked">
+        <div class="card-content">
+            <p>{{tweet.text}}</p>
+            <a *ngIf="tweet.truncated" href="{{tweet.link}}"></a>
+            <i>{{getTweetDate()}}</i>
+        </div>
+        <div class="card-action">
+            <a class="btn btn-flat waves waves-light">Ajouter aux favoris</a>
+        </div>
+    </div>
+</div>
