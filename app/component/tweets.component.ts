@@ -7,7 +7,7 @@ import {Tweet} from "../model/tweet";
     selector: 'tweets',
     templateUrl: 'tweets.component.html'
 })
-export class TweetsComponent implements OnInit {
+export class TweetsComponent {
     @Input() friendId: number;
 
     tweets: Tweet[];
@@ -15,8 +15,7 @@ export class TweetsComponent implements OnInit {
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
-    ngOnInit(): void {
-        console.log(this.friendId);
+    load():void{
         this.api.get<Tweet[]>('/users/' + this.auth.getUserId() + "/friends/" + this.friendId + "/tweets").subscribe(tweets => {
             this.tweets = tweets;
         })

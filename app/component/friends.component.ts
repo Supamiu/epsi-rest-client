@@ -1,20 +1,26 @@
-import {Component, Input, OnChanges, ChangeDetectionStrategy} from "@angular/core";
+import {ViewChild, Component, Input, OnChanges} from "@angular/core";
 import {ApiService} from "../service/api.service";
 import {AuthService} from "../service/auth.service";
+import {TweetsComponent} from "./tweets.component";
 
 @Component({
     moduleId: module.id,
     selector: 'friends',
-    templateUrl: 'friends.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: 'friends.component.html'
 })
 export class FriendsComponent implements OnChanges {
 
     @Input() friendIds: number[];
 
-    twitter_friends: any[] = [];
+    public twitter_friends: any[] = [];
+
+    @ViewChild(TweetsComponent) tweets: TweetsComponent;
 
     constructor(private api: ApiService, private auth: AuthService) {
+    }
+
+    loadTweets(): void {
+        this.tweets.load();
     }
 
     ngOnChanges(): void {
