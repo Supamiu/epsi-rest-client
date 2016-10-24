@@ -12,7 +12,7 @@ export class FriendsComponent implements OnChanges {
 
     @Input() friendIds: number[];
 
-    friends: any[] = [];
+    twitter_friends: any[] = [];
 
     constructor(private api: ApiService, private auth: AuthService) {
     }
@@ -22,7 +22,7 @@ export class FriendsComponent implements OnChanges {
             if (this.friendIds.length > 0) {
                 this.api.get<any>('/users/' + this.auth.getUserId() + "/friends/lookup?ids=" + this.friendIds.join(',')).subscribe(friends => {
                     if (friends.errors === undefined) {
-                        this.friends = <any[]>friends;
+                        this.twitter_friends = <any[]>friends;
                     }
                 });
             }
