@@ -13,6 +13,7 @@ import {FriendComponent} from "./component/friend.component";
 import {TweetsComponent} from "./component/tweets.component";
 import {TweetComponent} from "./component/tweet.component";
 import {SignupComponent} from "./component/sign-up.component";
+import {FavoritesComponent} from "./component/favorites.component";
 
 @NgModule({
     imports: [
@@ -36,6 +37,10 @@ import {SignupComponent} from "./component/sign-up.component";
             {
                 path: 'signup',
                 component: SignupComponent
+            },
+            {
+                path: 'favorites',
+                component: FavoritesComponent
             }
         ])],
     declarations: [
@@ -46,7 +51,8 @@ import {SignupComponent} from "./component/sign-up.component";
         FriendComponent,
         TweetsComponent,
         SignupComponent,
-        TweetComponent
+        TweetComponent,
+        FavoritesComponent
     ],
     bootstrap: [AppComponent],
     providers: [AuthService, ApiService]

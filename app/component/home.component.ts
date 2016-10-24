@@ -58,4 +58,8 @@ export class HomeComponent implements OnInit {
             window.location.href = res.link;
         })
     }
+
+    favorites():void{
+        this.router.navigateByUrl("/favorites");
+    }
 }

@@ -12,6 +12,11 @@ export class ApiService {
     constructor(private http: Http, private auth: AuthService) {
     }
 
+    public delete(uri: string, options: RequestOptionsArgs = {}): Observable<any> {
+        options.method = RequestMethod.Delete;
+        return this.request<any>(uri, options);
+    }
+
     public put<T>(uri: string, body: string, options: RequestOptionsArgs = {}): Observable<T> {
         options.method = RequestMethod.Put;
         options.body = body;

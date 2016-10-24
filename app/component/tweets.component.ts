@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {ApiService} from "../service/api.service";
 import {AuthService} from "../service/auth.service";
 import {Tweet} from "../model/tweet";
@@ -15,7 +15,7 @@ export class TweetsComponent {
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
-    load():void{
+    load(): void {
         this.api.get<Tweet[]>('/users/' + this.auth.getUserId() + "/friends/" + this.friendId + "/tweets").subscribe(tweets => {
             this.tweets = tweets;
         })

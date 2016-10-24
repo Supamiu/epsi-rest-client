@@ -5,8 +5,11 @@
             <a *ngIf="tweet.truncated" href="{{tweet.link}}"></a>
             <i>{{getTweetDate()}}</i>
         </div>
-        <div class="card-action">
+        <div class="card-action" *ngIf="!favorite" (click)="addFavorite()">
             <a class="btn btn-flat waves waves-light">Ajouter aux favoris</a>
+        </div>
+        <div class="card-action" *ngIf="favorite" (click)="deleteFavorite()">
+            <a class="btn btn-flat waves waves-light">Retirer des favoris</a>
         </div>
     </div>
 </div>
