@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {Tweet} from "../model/tweet";
 import {ApiService} from "../service/api.service";
 import {AuthService} from "../service/auth.service";
@@ -11,19 +11,21 @@ export class TweetComponent {
 
     @Input() tweet: Tweet;
 
-    @Input() favorite:boolean = false;
+    @Input() favorite: boolean = false;
 
-    constructor(private api:ApiService, private auth:AuthService){}
+    constructor(private api: ApiService, private auth: AuthService) {
+    }
 
-    getTweetDate():string{
+    getTweetDate(): string {
         return new Date(this.tweet.created_at).toLocaleDateString();
     }
 
-    addFavorite():void{
-        this.api.post<{error?:string}>('/users/'+this.auth.getUserId()+'/saved', JSON.stringify({tweeter_id:this.tweet.id}));
+    addFavorite(): void {
+        console.log("ADD FAVORITE !");
+        return this.api.post<{error?: string}>('/users/' + this.auth.getUserId() + '/saved', JSON.stringify({tweeter_id: this.tweet.id})).subscribe();
     }
 
-    deleteFavorite():void{
-        this.api.delete('/users/'+this.auth.getUserId()+'/saved/'+this.tweet.id);
+    deleteFavorite(): void {
+        return this.api.delete('/users/' + this.auth.getUserId() + '/saved/' + this.tweet.id).subscribe();
     }
 }

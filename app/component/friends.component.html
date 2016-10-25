@@ -1,5 +1,5 @@
 <ul class="s6 collapsible popout" data-collapsible="accordion">
-    <li *ngFor="let twitter_friend of twitter_friends" (click)="loadTweets()">
+    <li *ngFor="let twitter_friend of twitter_friends">
         <friend [friend]="twitter_friend" class="collapsible-header"></friend>
         <tweets [friendId]="twitter_friend.id" class="collapsible-body"></tweets>
     </li>

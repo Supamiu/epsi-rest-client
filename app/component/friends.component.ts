@@ -19,10 +19,6 @@ export class FriendsComponent implements OnChanges {
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
-    loadTweets(): void {
-        this.tweets.load();
-    }
-
     ngOnChanges(): void {
         if (this.friendIds !== undefined) {
             if (this.friendIds.length > 0) {
