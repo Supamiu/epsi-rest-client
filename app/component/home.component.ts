@@ -11,18 +11,22 @@ import {User} from "../model/user";
 })
 export class HomeComponent implements OnInit {
 
+    //Les Ids de nos amis, remplis par ngOnInit
     private friendIds: number[] = [];
 
+    //gestion des dépendences.
     constructor(private api: ApiService, private auth: AuthService
         , private router: Router, private route: ActivatedRoute) {
     }
 
+    //Charge le contenu de la page.
     load(): void {
         this.api.get<{ids: number[]}>('/users/' + this.auth.getUserId() + '/friends').subscribe(friends => {
             this.friendIds = friends.ids;
         });
     }
 
+    //Exécutée une fois le comosant chargé.
     ngOnInit(): void {
         this.route.queryParams.subscribe(params => {
             if (params.hasOwnProperty("oauth_token") && params.hasOwnProperty("oauth_verifier")) {
@@ -53,13 +57,10 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    //Ajoute la connection avec twitter.
     signInWithTwitter() {
         this.api.get<{link: string}>('/users/' + this.auth.getUserId() + '/oauth').subscribe(res => {
             window.location.href = res.link;
         })
-    }
-
-    favorites():void{
-        this.router.navigateByUrl("/favorites");
     }
 }

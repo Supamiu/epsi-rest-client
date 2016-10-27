@@ -10,15 +10,20 @@ import {TweetsComponent} from "./tweets.component";
 })
 export class FriendsComponent implements OnChanges {
 
+    //Les Ids des amis de l'utilisateur.
     @Input() friendIds: number[];
 
+    //Les amis de l'utilisateur
     public twitter_friends: any[] = [];
 
+    //Référence vers un composant enfant : TweetsComponent.
     @ViewChild(TweetsComponent) tweets: TweetsComponent;
 
+    //Gestion de l'injection de dépendences.
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
+    //Fonction appellée à chaque changement du DOM.
     ngOnChanges(): void {
         if (this.friendIds !== undefined) {
             if (this.friendIds.length > 0) {
@@ -29,5 +34,9 @@ export class FriendsComponent implements OnChanges {
                 });
             }
         }
+    }
+    //Charge les tweets de l'utilisateur en cours (dans l'itération du ngFor)
+    loadTweets():void{
+        this.tweets.load();
     }
 }

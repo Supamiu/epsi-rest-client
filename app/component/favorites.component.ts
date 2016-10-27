@@ -9,13 +9,17 @@ import {Router} from "@angular/router";
     selector: 'favorites',
     templateUrl: 'favorites.component.html'
 })
+//Composant qui gère la page des favoris.
 export class FavoritesComponent implements OnInit {
 
-    favorites: Tweet[] = [];
+    //Nos tweets à afficher.
+    tweets: Tweet[] = [];
 
+    //Constructeur simple qui utilise l'injection de dépendence angular pour récupérer ce dont il a besoin.
     constructor(private api: ApiService, private auth: AuthService, private router:Router) {
     }
 
+    //Fonction exécutée une fois le composant chargé, elle vérifie la connection et charge les tweets.
     ngOnInit(): void {
         if (!this.auth.isConnected()) {
             this.router.navigateByUrl("/login");
@@ -23,13 +27,14 @@ export class FavoritesComponent implements OnInit {
         this.api.get<FavoriteTweet[]>('/users/' + this.auth.getUserId() + '/saved').subscribe(favorites => {
             favorites.forEach(favorite => {
                 this.api.get<Tweet>('/users/' + this.auth.getUserId() + '/saved/' + favorite.id).subscribe(tweet => {
-                    this.favorites.push(tweet);
+                    this.tweets.push(tweet);
                 })
             });
         });
     }
 }
 
+//Modèle simple qui sert de helper pour contenter le transpileur typescript et éviter de typer en any.
 export interface FavoriteTweet {
     id: number;
     tweeter_id: number;

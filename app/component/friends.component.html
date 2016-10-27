@@ -1,4 +1,5 @@
-<ul class="s6 collapsible popout" data-collapsible="accordion">
+<progress-bar *ngIf="twitter_friends.length === 0"></progress-bar>
+<ul class="s6 collapsible popout" data-collapsible="accordion" (click)="loadTweets()">
     <li *ngFor="let twitter_friend of twitter_friends">
         <friend [friend]="twitter_friend" class="collapsible-header"></friend>
         <tweets [friendId]="twitter_friend.id" class="collapsible-body"></tweets>

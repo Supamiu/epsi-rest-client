@@ -7,6 +7,7 @@ import {AuthService} from "../service/auth.service";
     selector: 'tweet',
     templateUrl: 'tweet.component.html'
 })
+//Gestion de l'affichage et des actions sur un tweet.
 export class TweetComponent {
 
     @Input() tweet: Tweet;
@@ -16,16 +17,18 @@ export class TweetComponent {
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
+    //Formatte la date proprement à partir de la date twitter.
     getTweetDate(): string {
         return new Date(this.tweet.created_at).toLocaleDateString();
     }
 
+    //Ajout le tweet en favoris.
     addFavorite(): void {
-        console.log("ADD FAVORITE !");
-        return this.api.post<{error?: string}>('/users/' + this.auth.getUserId() + '/saved', JSON.stringify({tweeter_id: this.tweet.id})).subscribe();
+        this.api.post<{error?: string}>('/users/' + this.auth.getUserId() + '/saved', JSON.stringify({tweeter_id: this.tweet.id})).subscribe();
     }
 
+    //Retire le tweet des favoris.
     deleteFavorite(): void {
-        return this.api.delete('/users/' + this.auth.getUserId() + '/saved/' + this.tweet.id).subscribe();
+        this.api.delete('/users/' + this.auth.getUserId() + '/saved/' + this.tweet.id).subscribe();
     }
 }

@@ -14,6 +14,7 @@ import {TweetsComponent} from "./component/tweets.component";
 import {TweetComponent} from "./component/tweet.component";
 import {SignupComponent} from "./component/sign-up.component";
 import {FavoritesComponent} from "./component/favorites.component";
+import {ProgressBarComponent} from "./component/progress-bar.component";
 
 @NgModule({
     imports: [
@@ -52,10 +53,12 @@ import {FavoritesComponent} from "./component/favorites.component";
         TweetsComponent,
         SignupComponent,
         TweetComponent,
-        FavoritesComponent
+        FavoritesComponent,
+        ProgressBarComponent
     ],
     bootstrap: [AppComponent],
     providers: [AuthService, ApiService]
 })
 export class AppModule {
+    //Module principal de l'application.
 }
