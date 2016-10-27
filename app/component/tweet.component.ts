@@ -15,8 +15,6 @@ export class TweetComponent {
 
     @Input() favorite: boolean = false;
 
-    @Input() favoriteId: number;
-
     @Output() ondelete = new EventEmitter<string>();
 
     //Gestion des dépendences via le constructeur.

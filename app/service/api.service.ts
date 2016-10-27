@@ -48,16 +48,13 @@ export class ApiService {
     //La requête paramétrable appellée par tous les verbes HTTP pour construire et envoyer la requête finale.
     public request<T>(uri: string, options: RequestOptionsArgs): Observable<T> {
         if (this.auth.isConnected()) {
-            if (uri.indexOf('?') === -1) {
-                uri += "?key=" + this.auth.key;
-            } else {
-                uri += "&key=" + this.auth.key;
-            }
+            options.headers = new Headers(options.headers);
+            options.headers.append("X-CUSTOM-AUTH", this.auth.key);
         }
         return this.http.request(this.api_url + uri, options).map(res => {
-            if(res.status !== 204 && res.text().length > 0) {
+            if (res.status !== 204 && res.text().length > 0) {
                 return <T>res.json();
-            }else{
+            } else {
                 return null;
             }
         });
