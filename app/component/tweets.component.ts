@@ -13,16 +13,16 @@ export class TweetsComponent {
     //Tweets à afficher.
     tweets: Tweet[];
 
-    //gestion de la DI.
+    //Gestion de la DI.
     constructor(private api: ApiService, private auth: AuthService) {
     }
 
     //Charge les tweets à afficher.
     load(): void {
-        console.log("LOADING TWEETS");
-        this.api.get<Tweet[]>('/users/' + this.auth.getUserId() + "/friends/" + this.friendId + "/tweets").subscribe(tweets => {
-            console.log("TWEETS LOADED");
-            this.tweets = tweets;
-        })
+        if (this.tweets === undefined) {
+            this.api.get<Tweet[]>('/users/' + this.auth.getUserId() + "/friends/" + this.friendId + "/tweets").subscribe(tweets => {
+                this.tweets = tweets;
+            });
+        }
     }
 }

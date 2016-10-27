@@ -54,6 +54,12 @@ export class ApiService {
                 uri += "&key=" + this.auth.key;
             }
         }
-        return this.http.request(this.api_url + uri, options).map(res => <T>res.json());
+        return this.http.request(this.api_url + uri, options).map(res => {
+            if(res.status !== 204 && res.text().length > 0) {
+                return <T>res.json();
+            }else{
+                return null;
+            }
+        });
     }
 }

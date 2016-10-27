@@ -1,3 +1,5 @@
 <progress-bar *ngIf="tweets === undefined"></progress-bar>
-<div *ngIf="tweets.length === 0"><h3>Aucun nouveau tweet depuis la dernière consultation.</h3></div>
+<div *ngIf="tweets !== undefined">
+    <div *ngIf="tweets?.length === 0"><i>Aucun nouveau tweet depuis la dernière consultation.</i></div>
+</div>
 <tweet *ngFor="let tweet of tweets" [tweet]="tweet"></tweet>

@@ -1,1 +1,3 @@
-<tweet *ngFor="let tweet of tweets" [favorite]="true" [tweet]="tweet"></tweet>
+<div class="container">
+    <tweet *ngFor="let tweet of tweets" [favorite]="true" [tweet]="tweet" (ondelete)="remove($event)"></tweet>
+</div>

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     //Les Ids de nos amis, remplis par ngOnInit
     private friendIds: number[] = [];
 
-    //gestion des dépendences.
+    //Gestion des dépendences.
     constructor(private api: ApiService, private auth: AuthService
         , private router: Router, private route: ActivatedRoute) {
     }

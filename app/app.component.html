@@ -1,10 +1,17 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li><a routerLink="/login">Déconnecter</a></li>
+</ul>
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo right">Twitter Dashboard</a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <a class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
                 <li routerLink="/home" routerLinkActive="active"><a>Accueil</a></li>
                 <li routerLink="/favorites" routerLinkActive="active"><a>Favoris</a></li>
+                <!-- Dropdown Trigger -->
+                <li [hidden]="!isConnected()"><a class="dropdown-button" data-beloworigin="true"
+                                                 data-activates="dropdown1">{{getUserName()}}<i
+                        class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </div>
     </nav>

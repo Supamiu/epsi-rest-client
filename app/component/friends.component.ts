@@ -16,9 +16,6 @@ export class FriendsComponent implements OnChanges {
     //Les amis de l'utilisateur
     public twitter_friends: any[] = [];
 
-    //Référence vers un composant enfant : TweetsComponent.
-    @ViewChild(TweetsComponent) tweets: TweetsComponent;
-
     //Gestion de l'injection de dépendences.
     constructor(private api: ApiService, private auth: AuthService) {
     }
@@ -34,9 +31,5 @@ export class FriendsComponent implements OnChanges {
                 });
             }
         }
-    }
-    //Charge les tweets de l'utilisateur en cours (dans l'itération du ngFor)
-    loadTweets():void{
-        this.tweets.load();
     }
 }

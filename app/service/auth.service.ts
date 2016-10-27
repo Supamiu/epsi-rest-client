@@ -28,4 +28,8 @@ export class AuthService {
     public getUserId(): number {
         return +atob(this.key).split(':')[0];
     }
+
+    public getUserName(): string {
+        return atob(this.key).split(':')[1];
+    }
 }

@@ -1,6 +1,6 @@
 //Modèle d'un tweet basique.
 export interface Tweet {
-    id: number;
+    id_str: string;
     text: string;
     user: {name: string};
     created_at: string;

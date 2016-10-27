@@ -19,6 +19,18 @@ export class FavoritesComponent implements OnInit {
     constructor(private api: ApiService, private auth: AuthService, private router:Router) {
     }
 
+    //Retire un élément de notre tableau.
+    remove(tweet_id:string){
+        let index = 0;
+        this.tweets.forEach(tweet => {
+            if(tweet.id_str === tweet_id){
+                this.tweets.splice(index, 1);
+                return;
+            }
+            index++;
+        })
+    }
+
     //Fonction exécutée une fois le composant chargé, elle vérifie la connection et charge les tweets.
     ngOnInit(): void {
         if (!this.auth.isConnected()) {
@@ -28,7 +40,7 @@ export class FavoritesComponent implements OnInit {
             favorites.forEach(favorite => {
                 this.api.get<Tweet>('/users/' + this.auth.getUserId() + '/saved/' + favorite.id).subscribe(tweet => {
                     this.tweets.push(tweet);
-                })
+                });
             });
         });
     }
