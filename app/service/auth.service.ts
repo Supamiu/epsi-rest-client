@@ -1,6 +1,8 @@
 import {Injectable} from "@angular/core";
 import {User} from "../model/user";
 @Injectable()
+//Service d'uahtntification, utilise le localstorage pour stocker une clef et un utilisateur,
+//Le but étant de pouvoir donner une clef à l'API pour authentifier l'utilisateur lors de la requête.
 export class AuthService {
 
     public get key(): string {
